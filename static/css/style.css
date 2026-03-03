@@ -1,0 +1,86 @@
+:root {
+    --primary-color: #4361ee;
+    --bg-light: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #212529;
+    --transition-speed: 0.3s;
+}
+
+[data-theme="dark"] {
+    --bg-light: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --primary-color: #4895ef;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light) !important;
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), transform 0.2s;
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+}
+
+.task-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#theme-toggle {
+    transition: transform 0.3s;
+}
+
+#theme-toggle:hover {
+    transform: rotate(30deg);
+}
+
+.pagination .page-link {
+    border-radius: 8px;
+    margin: 0 2px;
+}
+
+.navbar {
+    background: linear-gradient(135deg, #4361ee, #4895ef) !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4361ee, #4895ef);
+    border: none;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}

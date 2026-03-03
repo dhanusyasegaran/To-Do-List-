@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Task - TaskMaster{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 rounded-4 animate-fade-in">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-4">
+                    <a href="{{ url_for('index') }}" class="btn btn-light rounded-circle btn-sm me-3 shadow-sm">
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
+                    <h3 class="fw-bold mb-0">Edit Task</h3>
+                </div>
+
+                <form action="{{ url_for('edit_task', id=task.id) }}" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Task Title</label>
+                        <input type="text" name="title" class="form-control" value="{{ task.title }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Description</label>
+                        <textarea name="description" class="form-control"
+                            rows="4">{{ task.description or '' }}</textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Due Date</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i
+                                    class="bi bi-calendar-event"></i></span>
+                            <input type="date" name="due_date" class="form-control border-start-0"
+                                value="{{ task.due_date.strftime('%Y-%m-%d') if task.due_date else '' }}">
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary py-2 fw-bold">
+                            <i class="bi bi-check-lg me-2"></i>Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
